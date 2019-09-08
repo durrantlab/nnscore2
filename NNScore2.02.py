@@ -14,8 +14,8 @@ import pickle
 
 
 ################################## MODIFY THIS VARIABLE TO POINT TO THE AUTODOCK VINA EXECUTABLE ##################################
-docking_executable = "/PATH/TO/VINA_1_1_2/vina"
-# Example: docking_executable = "/gpfs/autodock_vina_1_1_2_linux_x86/bin/vina"
+vina_executable = "/PATH/TO/VINA_1_1_2/vina"
+# Example: vina_executable = "/gpfs/autodock_vina_1_1_2_linux_x86/bin/vina"
 ###################################################################################################################################
 
 # The ffnet class was derived from the ffnet python package developed by Marek Wojciechowski (http://ffnet.sourceforge.net/).
@@ -1831,7 +1831,7 @@ class binana:
         #  os.mkdir(parameters.params['output_dir'])
 
         # Now get vina
-        vina_output = getCommandOutput2(parameters.params['docking_executable'] + ' --score_only --receptor ' + receptor_pdbqt_filename + ' --ligand ' + ligand_pdbqt_filename)
+        vina_output = getCommandOutput2(parameters.params['vina_executable'] + ' --score_only --receptor ' + receptor_pdbqt_filename + ' --ligand ' + ligand_pdbqt_filename)
 
         print(vina_output)
         vina_output = vina_output.split("\n")
@@ -2051,12 +2051,12 @@ class command_line_parameters:
     
     def __init__(self, parameters):
         
-        global docking_executable
+        global vina_executable
         
         # first, set defaults
         self.params['receptor'] = ''
         self.params['ligand'] = ''
-        self.params['docking_executable'] = docking_executable
+        self.params['vina_executable'] = vina_executable
         self.params['check_vina_version'] = "TRUE" # TRUE by default, but setting to false will speed up execution. Good when rescoring many poses.
 
         # now get user inputed values
@@ -2079,7 +2079,7 @@ class command_line_parameters:
                     print("=======================\n")
                     print((textwrap.fill("-receptor: File name of the receptor PDBQT file.") + "\n"))
                     print((textwrap.fill("-ligand: File name of the ligand PDBQT file. AutoDock Vina output files, typically containing multiple poses, are also permitted.") + "\n"))
-                    print((textwrap.fill("-docking_executable: The location of the AutoDock Vina 1.1.2 executable. If you don't wish to specify the location of this file every time you use NNScore 2.02, simply edit the docking_executable variable defined near the begining of the NNScore2.02.py script.") + "\n"))
+                    print((textwrap.fill("-vina_executable: The location of the AutoDock Vina 1.1.2 executable. If you don't wish to specify the location of this file every time you use NNScore 2.02, simply edit the vina_executable variable defined near the begining of the NNScore2.02.py script.") + "\n"))
                     print("PROGRAM OUTPUT")
                     print("==============\n")
                     print((textwrap.fill("NNScore 2.02 evaluates each of the ligand poses contained in the file specified by the -ligand tag using 20 distinct neural-network scoring functions. The program then seeks to identify which of the poses has the highest predicted affinity using several metrics:") + "\n"))
@@ -2100,7 +2100,7 @@ class command_line_parameters:
             print("Command-line parameters used:")
             print(("\tReceptor:        " + self.params["receptor"]))
             print(("\tLigand:          " + self.params["ligand"]))
-            print(("\tVina executable: " + self.params["docking_executable"] + "\n"))
+            print(("\tVina executable: " + self.params["vina_executable"] + "\n"))
         
         # make a list of all the command-line parameters not used
         error = ""
@@ -2116,22 +2116,22 @@ class command_line_parameters:
         # do a check to make sure the autodock vina is version 1.1.2
         if self.params["check_vina_version"] == "TRUE":
             vina_version_output = ""
-            if not os.path.exists(self.params['docking_executable']):
+            if not os.path.exists(self.params['vina_executable']):
                 vina_version_output = ""
             else:
                 try:
-                    vina_version_output = getCommandOutput2(self.params['docking_executable'] + ' --version')
+                    vina_version_output = getCommandOutput2(self.params['vina_executable'] + ' --version')
                 except:
                     vina_version_output = ""
     
             if not " 1.1.2 " in vina_version_output:
                 print("ERROR: NNScore 2.02 is designed to work with AutoDock Vina 1.1.2.\nOther versions of AutoDock may not work properly. Please download\nAutoDock Vina 1.1.2 from http://vina.scripps.edu/download.html.\n")
-                print("Once this executable is downloaded, you can use the -docking_executable\ntag to indicate its location. Alternatively, you can simply modify\nthe docking_executable variable defined near the beginning of\nthe NNScore2.02.py file.\n")
+                print("Once this executable is downloaded, you can use the -vina_executable\ntag to indicate its location. Alternatively, you can simply modify\nthe vina_executable variable defined near the beginning of\nthe NNScore2.02.py file.\n")
                 sys.exit(0)
 
 
     def okay_to_proceed(self):
-        if self.params['receptor'] != '' and self.params['ligand'] != '' and self.params['docking_executable'] != '':
+        if self.params['receptor'] != '' and self.params['ligand'] != '' and self.params['vina_executable'] != '':
             return True
         else: return False
 
@@ -2186,12 +2186,12 @@ print((textwrap.fill("NNScore 2.02 is based in part on the ffnet python package 
 print("")
 
 print("Use the -help command-line parameter for extended help.\n")
-print("Example: python NNScore2.02.py -receptor myreceptor.pdbqt -ligand myligand.pdbqt -docking_executable /PATH/TO/VINA/1.1.2/vina\n")
+print("Example: python NNScore2.02.py -receptor myreceptor.pdbqt -ligand myligand.pdbqt -vina_executable /PATH/TO/VINA/1.1.2/vina\n")
 
 cmd_params = command_line_parameters(sys.argv[:])
 
 if cmd_params.okay_to_proceed() is False:
-    print("ERROR: You need to specify the ligand and receptor PDBQT files, as\nwell as the full path the the AutoDock Vina 1.1.2 executable, using the\n-receptor, -ligand, and -docking_executable tags from the command line.\nThe -ligand tag can also specify an AutoDock Vina output file.\n")
+    print("ERROR: You need to specify the ligand and receptor PDBQT files, as\nwell as the full path the the AutoDock Vina 1.1.2 executable, using the\n-receptor, -ligand, and -vina_executable tags from the command line.\nThe -ligand tag can also specify an AutoDock Vina output file.\n")
     sys.exit(0)
     
 lig = cmd_params.params['ligand']
