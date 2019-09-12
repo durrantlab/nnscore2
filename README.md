@@ -1,4 +1,4 @@
-# NNScore1 and NNScore 2 #
+# NNScore 1 and NNScore 2 #
 
 ## Home ##
 
