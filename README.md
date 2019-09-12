@@ -60,7 +60,10 @@ parameter.
 
 Note: Only PDBQT files of the receptor and ligand are accepted. Scripts to
 convert from PDB to PDBQT are included in the [AutoDockTools
-package](http://autodock.scripps.edu/resources/adt).
+package](http://autodock.scripps.edu/resources/adt). **Be sure to use
+AutoDockTools to convert from PDB to PDBQT, not Open Babel.** These two
+programs do not assign the same partial atomic charges, and NNScore was
+trained using AutoDockTools-assigned charges.
 
 Examples:
 
