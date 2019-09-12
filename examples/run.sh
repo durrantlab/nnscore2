@@ -1,4 +1,4 @@
-# You must set your own path to the vina executable
+# You must set your own path to the Vina 1.1.2 executable
 export VINA_EXEC=/Applications/autodock_vina_1_1_2_mac/bin/vina
 
 # Run NNScore2
