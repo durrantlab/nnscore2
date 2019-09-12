@@ -93,7 +93,7 @@ highly system dependent. Including positive controls (known inhibitors) in
 virtual screens is a useful way to identify which scoring function is best
 suited to your needs.
 
-### REQUIREMENTS ###
+### Requirements ###
 
 * Python3: A copy of the Python interpreter can be downloaded from
   [http://www.python.org/getit/](http://www.python.org/getit/).
@@ -107,11 +107,11 @@ suited to your needs.
   PDBQT format using scripts included in MGLTools (`prepare_receptor4.py` and
   `prepare_ligand4.py`). MGLTools can be obtained from
   [http://mgltools.scripps.edu/downloads](http://mgltools.scripps.edu/downloads).
-  **Be sure to use MGLTools to convert from PDB to PDBQT, not Open Babel.
+  **Be sure to use MGLTools to convert from PDB to PDBQT, not Open Babel.**
   These two programs do not assign the same partial atomic charges, and
-  NNScore was trained using MGLTools-assigned charges.**
+  NNScore was trained using MGLTools-assigned charges.
 
-### COMMAND-LINE PARAMETERS ###
+### Command-Line Parameters ###
 
 `-receptor`: File name of the receptor PDBQT file.
 
@@ -123,7 +123,7 @@ don't wish to specify the location of this file every time you use NNScore
 2.0, simply edit the `vina_executable` variable defined near the beginning of
 the NNScore2.py script.
 
-### PROGRAM OUTPUT ###
+### Program Output ###
 
 NNScore 2.0 evaluates each of the ligand poses contained in the file specified
 by the -ligand tag using 20 distinct neural-network scoring functions. The
@@ -136,7 +136,7 @@ affinity using several metrics:
 3) The poses are ranked by the average of the scores given by the 20 networks.
    **This is the recommended metric.**
 
-### EXAMPLE OF USAGE ###
+### Example of Usage ###
 
 ```bash
 python NNScore2.py -receptor myreceptor.pdbqt -ligand myligand.pdbqt -vina_executable /PATH/TO/VINA/1.1.2/vina
