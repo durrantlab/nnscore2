@@ -38,7 +38,7 @@ NNScore 2.0: A Neural-Network Receptor–Ligand Scoring Function. Jacob D.
 Durrant, Andrew McCammon. Journal of Chemical Information and Modeling, 2011,
 51 (11), pp 2897-2903.
 
-## Usage for Version 1.0 ##
+## Usage for Version 1.X ##
 
 NNScore 1.0 has been implemented as a [python](http://www.python.org/) script.
 The program accepts the following parameters:
@@ -83,7 +83,7 @@ python NeuroScore.py -receptor protease.pdbqt
     -network ./networks/top_3_networks/16.net
 ```
 
-## Usage for Version 2.0 ##
+## Usage for Version 2.X ##
 
 NNScore 2.0 has also been implemented as a [python](http://www.python.org/)
 script. As demonstrated in [our
