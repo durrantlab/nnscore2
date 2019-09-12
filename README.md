@@ -51,15 +51,15 @@ The program accepts the following parameters:
 ```
 
 Note: It is best to use multiple neural networks to judge ligand binding by
-consensus. Commandline parameters can be used to add neural-network files to
+consensus. Command-line parameters can be used to add neural-network files to
 the list of those that will be used. To add a single neural network to the
 list, use the -network parameter to specify a single network file. To add
 multiple networks to the list, create a directory containing only network
 files and specify the path to that directory using the -networks_dir
 parameter.
 
-Note: Only pdbqt files of the receptor and ligand are accepted. Scripts to
-convert from pdb to pdbqt are included in the [AutoDockTools
+Note: Only PDBQT files of the receptor and ligand are accepted. Scripts to
+convert from PDB to PDBQT are included in the [AutoDockTools
 package](http://autodock.scripps.edu/resources/adt).
 
 Examples:
@@ -95,19 +95,21 @@ suited to your needs.
 
 ### REQUIREMENTS ###
 
-Python3: A copy of the Python interpreter can be downloaded from
-[http://www.python.org/getit/](http://www.python.org/getit/).
-
-AutoDock Vina 1.1.2: NNScore 2.0 uses AutoDock Vina 1.1.2 to obtain some
-information about the receptor-ligand complex. Note that previous versions of
-AutoDock Vina are not suitble. AutoDock Vina 1.1.2 can be downloaded from
-[http://vina.scripps.edu/download.html](http://vina.scripps.edu/download.html).
-
-MGLTools: As receptor and ligand inputs, NNScore 2.0 accepts models in the
-PDBQT format. Files in the more common PDB format can be converted to the
-PDBQT format using scripts included in MGLTools (`prepare_receptor4.py` and
-`prepare_ligand4.py`). MGLTools can be obtained from
-[http://mgltools.scripps.edu/downloads](http://mgltools.scripps.edu/downloads).
+* Python3: A copy of the Python interpreter can be downloaded from
+  [http://www.python.org/getit/](http://www.python.org/getit/).
+* AutoDock Vina 1.1.2: NNScore 2.0 uses AutoDock Vina 1.1.2 to obtain some
+  information about the receptor-ligand complex. Note that previous versions
+  of AutoDock Vina are not suitable. AutoDock Vina 1.1.2 can be downloaded
+  from
+  [http://vina.scripps.edu/download.html](http://vina.scripps.edu/download.html).
+* MGLTools: As receptor and ligand inputs, NNScore 2.0 accepts models in the
+  PDBQT format. Files in the more common PDB format can be converted to the
+  PDBQT format using scripts included in MGLTools (`prepare_receptor4.py` and
+  `prepare_ligand4.py`). MGLTools can be obtained from
+  [http://mgltools.scripps.edu/downloads](http://mgltools.scripps.edu/downloads).
+  **Be sure to use MGLTools to convert from PDB to PDBQT, not Open Babel.
+  These two programs do not assign the same partial atomic charges, and
+  NNScore was trained using MGLTools-assigned charges.**
 
 ### COMMAND-LINE PARAMETERS ###
 
