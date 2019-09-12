@@ -1,6 +1,8 @@
-# NNScore 2.02 is released under the GNU General Public License (see http://www.gnu.org/licenses/gpl.html).
-# If you have any questions, comments, or suggestions, please don't hesitate to contact me, Jacob
-# Durrant, at jdurrant [at] ucsd [dot] edu. If you use NNScore 2.02 in your work, please cite [REFERENCE HERE].
+# NNScore 2.02 is released under the GNU General Public License (see
+# http://www.gnu.org/licenses/gpl.html). If you have any questions, comments,
+# or suggestions, please don't hesitate to contact me, Jacob Durrant, at
+# durrantj [at] pitt [dot] edu. If you use NNScore 2.02 in your work, please
+# cite [REFERENCE HERE].
 
 
 import __future__
@@ -2178,7 +2180,7 @@ def networks():
 print("\nNNScore 2.02")
 print("============\n")
 
-print((textwrap.fill("NNScore 2.02 is released under the GNU General Public License (see http://www.gnu.org/licenses/gpl.html). If you have any questions, comments, or suggestions, please contact the author, Jacob Durrant, at jdurrant [at] ucsd [dot] edu. If you use NNScore 2.02 in your work, please cite [REFERENCE HERE].")))
+print((textwrap.fill("NNScore 2.02 is released under the GNU General Public License (see http://www.gnu.org/licenses/gpl.html). If you have any questions, comments, or suggestions, please contact the author, Jacob Durrant, at durrantj [at] pitt [dot] edu. If you use NNScore 2.02 in your work, please cite NNScore 2.0: A Neural-Network Receptor-Ligand Scoring Function. Jacob D. Durrant, Andrew McCammon. Journal of Chemical Information and Modeling, 2011, 51 (11), pp 2897-2903.")))
 
 print("")
 
